@@ -10,5 +10,5 @@
 
 ### RapidAPI
 
-Travel Advisor: [View on RapidAPI](https://rapidapi.com/apidojo/api/travel-advisor).\
-Open Weather Map: [View on RapidAPI](https://rapidapi.com/community/api/open-weather-map).\
+Travel Advisor: [View on RapidAPI](https://rapidapi.com/apidojo/api/travel-advisor)<br>
+Open Weather Map: [View on RapidAPI](https://rapidapi.com/community/api/open-weather-map)<br>
