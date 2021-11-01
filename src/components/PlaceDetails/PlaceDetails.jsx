@@ -1,7 +1,7 @@
-const PlaceDetails = () => {
+const PlaceDetails = ({ place }) => {
 	return (
 		<div>
-			<h1>Place Details</h1>
+			<h1>{place.name}</h1>
 		</div>
 	)
 }
