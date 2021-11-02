@@ -9,7 +9,7 @@ import Map from './components/Map/Map.jsx'
 const App = () => {
 	const [places, setPlaces] = useState([])
 	const [coords, setCoords] = useState({})
-	const [bounds, setBounds] = useState(null)
+	const [bounds, setBounds] = useState({})
 
 	const [isLoading, setIsLoading] = useState(false)
 
