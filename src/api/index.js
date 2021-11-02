@@ -14,12 +14,33 @@ export const getPlacesData = async (type, sw, ne) => {
 					tr_latitude: ne.lat,
 				},
 				headers: {
-					'x-rapidapi-host': process.env.REACT_APP_RAPIDAPI_HOST,
-					'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY,
+					'x-rapidapi-host': process.env.REACT_APP_TRAVEL_RAPIDAPI_HOST,
+					'x-rapidapi-key': process.env.REACT_APP_TRAVEL_RAPIDAPI_KEY,
 				},
 			}
 		)
 
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+export const getWeatherData = async (lat, lng) => {
+	try {
+		const { data } = await axios.get(
+			'https://community-open-weather-map.p.rapidapi.com/find',
+			{
+				params: {
+					lon: lng,
+					lat: lat,
+				},
+				headers: {
+					'x-rapidapi-host': process.env.REACT_APP_WEATHER_RAPIDAPI_HOST,
+					'x-rapidapi-key': process.env.REACT_APP_WEATHER_RAPIDAPI_KEY,
+				},
+			}
+		)
 		return data
 	} catch (error) {
 		console.log(error)

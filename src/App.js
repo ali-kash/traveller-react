@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { CssBaseline, Grid } from '@material-ui/core'
-import { getPlacesData } from './api/index.js'
+import { getPlacesData, getWeatherData } from './api/index.js'
 
 import Header from './components/Header/Header.jsx'
 import List from './components/List/List.jsx'
@@ -13,7 +13,7 @@ const App = () => {
 	const [coords, setCoords] = useState({})
 	const [bounds, setBounds] = useState(null)
 
-	// const [weatherData, setWeatherData] = useState([])
+	const [weatherData, setWeatherData] = useState([])
 	const [filteredPlaces, setFilteredPlaces] = useState([])
 	const [places, setPlaces] = useState([])
 
@@ -39,13 +39,21 @@ const App = () => {
 		if (bounds) {
 			setIsLoading(true)
 
+			getWeatherData(coords.lat, coords.lng).then((data) =>
+				setWeatherData(data)
+			)
+
 			getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-				setPlaces(data)
+				setPlaces(data.filter((place) => place.name && place.num_reviews > 0))
 				setFilteredPlaces([])
+				setRating('')
 				setIsLoading(false)
 			})
 		}
-	}, [type, coords, bounds])
+	}, [bounds, type])
+
+	console.log(places)
+	console.log(filteredPlaces)
 
 	return (
 		<>
@@ -76,6 +84,7 @@ const App = () => {
 						coords={coords}
 						places={filteredPlaces.length ? filteredPlaces : places}
 						setChildClicked={setChildClicked}
+						weatherData={weatherData}
 					/>
 				</Grid>
 			</Grid>
