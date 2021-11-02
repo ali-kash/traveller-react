@@ -33,7 +33,7 @@ const App = () => {
 		const filtered = places.filter((place) => Number(place.rating) > rating)
 
 		setFilteredPlaces(filtered)
-	}, [rating])
+	}, [places, rating])
 
 	useEffect(() => {
 		if (bounds) {
@@ -50,10 +50,7 @@ const App = () => {
 				setIsLoading(false)
 			})
 		}
-	}, [bounds, type])
-
-	console.log(places)
-	console.log(filteredPlaces)
+	}, [bounds, type, coords.lat, coords.lng])
 
 	return (
 		<>
