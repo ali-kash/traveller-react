@@ -58,7 +58,7 @@ const App = () => {
 			<Header setCoords={setCoords} />
 			<Grid
 				container
-				spacing={3}
+				spacing={0}
 				style={{
 					width: '100%',
 				}}
